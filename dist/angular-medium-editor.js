@@ -7,7 +7,7 @@ angular.module('angular-medium-editor', [])
     return {
       require: 'ngModel',
       restrict: 'AE',
-      scope: { bindOptions: '=' },
+      scope: { bindOptions: '=', options: '=' },
       link: function(scope, iElement, iAttrs, ctrl) {
 
         angular.element(iElement).addClass('angular-medium-editor');
@@ -15,14 +15,15 @@ angular.module('angular-medium-editor', [])
         // Parse options
         var opts = {},
             placeholder = '';
+
         var prepOpts = function() {
-          if (iAttrs.options) {
-            opts = scope.$eval(iAttrs.options);
-          }
+
+          opts = scope.options;
           var bindOpts = {};
           if (scope.bindOptions !== undefined) {
             bindOpts = scope.bindOptions;
           }
+
           opts = angular.extend(opts, bindOpts);
         };
         prepOpts();
