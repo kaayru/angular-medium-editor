@@ -54,6 +54,10 @@ angular.module('angular-medium-editor', [])
             }
 
             ctrl.$setViewValue(iElement.html());
+
+            if(typeof opts.callback == "function") {
+              opts.callback();
+            }
           });
         };
 
