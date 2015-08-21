@@ -43,7 +43,6 @@ angular.module('angular-medium-editor', [])
         });
 
         var onChange = function() {
-
           scope.$apply(function() {
 
             // If user cleared the whole text, we have to reset the editor because MediumEditor
@@ -56,18 +55,18 @@ angular.module('angular-medium-editor', [])
             ctrl.$setViewValue(iElement.html());
 
             if(typeof opts.callback == "function") {
-              opts.callback();
+              opts.callback(ctrl.editor);
             }
           });
         };
 
         // view -> model
+
         iElement.on('blur', onChange);
         iElement.on('input', onChange);
 
         // model -> view
         ctrl.$render = function() {
-
           if (!this.editor) {
             // Hide placeholder when the model is not empty
             if (!ctrl.$isEmpty(ctrl.$viewValue)) {
