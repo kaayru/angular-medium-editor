@@ -36,7 +36,7 @@ angular.module('angular-medium-editor', [])
           }
           prepOpts();
           // Hide placeholder when the model is not empty
-          if (!ctrl.$isEmpty(ctrl.$viewValue)) {
+          if (!ctrl.$isEmpty(ctrl.$viewValue) && opts.placeholder !== false) {
             opts.placeholder = '';
           }
           ctrl.editor = new MediumEditor(iElement, opts);
@@ -69,7 +69,7 @@ angular.module('angular-medium-editor', [])
         ctrl.$render = function() {
           if (!this.editor) {
             // Hide placeholder when the model is not empty
-            if (!ctrl.$isEmpty(ctrl.$viewValue)) {
+            if (!ctrl.$isEmpty(ctrl.$viewValue) && opts.placeholder !== false) {
               opts.placeholder = '';
             }
 
